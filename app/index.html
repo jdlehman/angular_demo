@@ -5,6 +5,7 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers/TrackCtrl.js"></script>
+    <script src="js/directives/jlBug.js"></script>
   </head>
   <body ng-app="bugTrackerApp">
     <div ng-controller="TrackCtrl">
@@ -13,7 +14,7 @@
       <input ng-model="tracker.reporter" placeholder="Reporter">
       <button ng-disabled="!tracker.bug || !tracker.reporter" ng-click="addBug()">Add Bug</button>
       <div ng-repeat="bug in tracker.bugs | filter:filter | orderBy:'-id'">
-        {{ bug.issue }} submitted by {{ bug.reporter }}
+        <jl-bug bug-data="bug"></jl-bug>
       </div>
     </div>
   </body>
