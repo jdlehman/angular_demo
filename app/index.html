@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Angular Demo</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/TrackCtrl.js"></script>
+  </head>
+  <body ng-app="bugTrackerApp">
+    <div ng-controller="TrackCtrl">
+      <input ng-model="filter" placeholder="Filter"><br>
+      <input ng-model="tracker.bug" placeholder="New Bug">
+      <input ng-model="tracker.reporter" placeholder="Reporter">
+      <button ng-disabled="!tracker.bug || !tracker.reporter" ng-click="addBug()">Add Bug</button>
+      <div ng-repeat="bug in tracker.bugs | filter:filter | orderBy:'-id'">
+        {{ bug.issue }} submitted by {{ bug.reporter }}
+      </div>
+    </div>
+  </body>
+</html>
